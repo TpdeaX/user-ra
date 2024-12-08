@@ -1,0 +1,58 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+// Define una paleta de colores amarillos personalizada
+$myapp-navy-blue-palette: mat.m2-define-palette((
+  50: #e3f2fd, // lightest blue
+  100: #bbdefb, // light blue
+  200: #90caf9, // medium light blue
+  300: #2c6ca0, // blue
+  400: #2196f3, // darker blue
+  500: #061835, // primary navy blue
+  600: #0c3988,
+  700: #000102,
+  800: #0a2156,
+  900: #09163d,
+  A100: #82b1ff, // blue accent
+  A200: #448aff,
+  A400: #2979ff,
+  A700: #2962ff,
+  contrast: (
+    50: #ffffff, // white
+    100: #ffffff, // white
+    200: #ffffff, // white
+    300: #ffffff, // white
+    400: #ffffff, // white
+    500: #ffffff, // white
+    600: #ffffff, // white
+    700: #ffffff, // white
+    800: #ffffff, // white
+    900: #ffffff, // white
+    A100: #ffffff, // white
+    A200: #ffffff, // white
+    A400: #ffffff, // white
+    A700: #ffffff, // white
+  )
+));
+
+// Define los colores del tema usando la nueva paleta azul marino
+$myapp-theme-primary: mat.m2-define-palette($myapp-navy-blue-palette, 500, 300, 700);
+$myapp-theme-accent: mat.m2-define-palette(mat.$m2-indigo-palette);
+$myapp-theme-warn: mat.m2-define-palette(mat.$m2-red-palette);
+
+
+// Define el tema usando los colores personalizados
+$myapp-theme: mat.m2-define-light-theme((
+  color: (
+    primary: $myapp-theme-primary,
+    accent: $myapp-theme-accent,
+    warn: $myapp-theme-warn,
+  )
+));
+
+body {
+  font-family: 'Outfit', sans-serif;
+}
+
+// Incluye los estilos de los componentes para el tema definido
+@include mat.all-component-themes($myapp-theme);

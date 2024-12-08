@@ -1,0 +1,74 @@
+<mat-card class="ar-container" [ngClass]="{'collapsed-layout': sidebarCollapsed}">
+  <!-- Localización (arriba a la izquierda) -->
+  <div id="position-label" class="position-label">
+    Latitud: -8.372221, Longitud: -74.553182
+  </div>
+
+  <!-- Escena de A-Frame -->
+  <a-scene
+    embedded
+    vr-mode-ui="enabled: false"
+    arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false; trackingMethod: best"
+    renderer="antialias: true; alpha: true"
+    debug="true"
+  >
+    <a-assets>
+      <a-asset-item id="modeloGLB" src="assets/models/spider_man_mcu.glb"></a-asset-item>
+    </a-assets>
+
+    <a-camera gps-new-camera="gpsMinDistance: 10" position="0 2 10"></a-camera>
+
+    <!-- Entidad con ubicación GPS -->
+    <a-entity
+      gltf-model="#modeloGLB"
+      gps-entity-place="latitude: -8.372221; longitude: -74.553182"
+      scale="20 20 20"
+      visible="true"
+    >
+      <a-text
+        value="Ubicación: Punto Rojo"
+        align="center"
+        position="0 1.5 0"
+        scale="5 5 5"
+        color="#FFFFFF"
+      ></a-text>
+      <a-text
+        value="Modelo 3D"
+        align="center"
+        position="0 2 0"
+        scale="5 5 5"
+        color="#FFFFFF"
+      ></a-text>
+    </a-entity>
+  </a-scene>
+
+  <!-- Controles (abajo al centro) -->
+  <div class="controls">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="capturePhoto()"
+      class="control-button capture-photo"
+    >
+      <mat-icon>camera_alt</mat-icon> Tomar Foto
+    </button>
+    <button
+      mat-raised-button
+      color="accent"
+      *ngIf="!isRecording"
+      (click)="startVideoRecording()"
+      class="control-button start-video"
+    >
+      <mat-icon>videocam</mat-icon> Grabar Video
+    </button>
+    <button
+      mat-raised-button
+      color="warn"
+      *ngIf="isRecording"
+      (click)="stopVideoRecording()"
+      class="control-button stop-video"
+    >
+      <mat-icon>stop</mat-icon> Detener Grabación
+    </button>
+  </div>
+</mat-card>

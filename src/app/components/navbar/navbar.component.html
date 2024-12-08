@@ -1,0 +1,34 @@
+<div class="toolbar-container">
+  <mat-toolbar color="primary">
+    <div class="toolbar-section-left">
+      <button mat-icon-button class="menu-button" (click)="onMenuButtonClick()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="spacer"></span>
+      <div class="line-separator"></div>
+      <span class="spacer"></span>
+      <img src="assets/logo.png" alt="Logo" class="logo">
+      <span class="spacer" style="margin-left: -20px;"></span>
+      <span class="title">Ucayali RA</span>
+    </div>
+
+    <div class="toolbar-section-right desktop-buttons">
+      <button mat-icon-button (click)="navigateToExpRa()" matTooltip="EXP RA">
+        <mat-icon class="fas fa-camera" style="color: #f0f0f0;"></mat-icon>
+      </button>
+    </div>
+    
+    <!-- Botón desplegable para pantallas pequeñas -->
+    <div class="toolbar-section-right mobile-menu" *ngIf="isMobile">
+      <button mat-icon-button class="dropdown-button" [matMenuTriggerFor]="mobileMenu">
+        <mat-icon>apps</mat-icon> <!-- Icono blanco diferente -->
+      </button>
+      <mat-menu #mobileMenu="matMenu">
+        <button mat-menu-item (click)="navigateToExpRa()">
+          <mat-icon class="fas fa-camera"></mat-icon> EXP RA
+        </button>
+        <!-- Más opciones del menú aquí -->
+      </mat-menu>
+    </div>    
+  </mat-toolbar>
+</div>

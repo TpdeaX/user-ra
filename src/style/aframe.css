@@ -1,0 +1,10 @@
+video {
+    width: 1vw !important;
+    height: 1vh !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    object-fit: cover; /* Asegura que el video cubra todo el contenedor */
+  }
+  

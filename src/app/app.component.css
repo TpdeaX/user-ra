@@ -1,0 +1,26 @@
+/* Overlay para oscurecer el área del router-outlet */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
+  z-index: 10; /* Colócalo encima del contenido */
+  pointer-events: all; /* Permite capturar clics para cerrar el sidebar */
+}
+
+/* Ajustes para dispositivos móviles */
+@media screen and (max-width: 768px) {
+  .content {
+    position: relative; /* Necesario para posicionar correctamente el overlay */
+  }
+
+  .content.collapsed {
+    margin-left: 0; /* Ajusta el margen en modo colapsado */
+  }
+
+  .content.expanded {
+    margin-left: 0; /* Asegura que el margen no interfiera */
+  }
+}
